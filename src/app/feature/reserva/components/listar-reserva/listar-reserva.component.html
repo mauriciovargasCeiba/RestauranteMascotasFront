@@ -1,7 +1,7 @@
 <div class="container">
   <div id="reservas">
     <ul class="reservas row g-2 list-unstyled">
-      <li *ngFor="let item of listaReservas | async" class="col-4">
+      <li *ngFor="let item of listaReservas" class="col-4">
         <div class="card">
           <div class="card-body">
             <p>ID de reserva: {{item.id}}</p>
@@ -13,7 +13,7 @@
             <p>Código de reserva: {{item.codigoGenerado}}</p>
             <div *ngIf="item.descuentos && item.descuentos[0].id" class="bg-light">
               <hr>
-              <p>Descuentos:</p> 
+              <p>Descuentos:</p>
               <ul>
                 <li *ngFor="let descuento of item.descuentos">
                   <p>Descripción: {{descuento.descripcion}}</p>
@@ -26,5 +26,8 @@
         </div>
       </li>
     </ul>
+    <div *ngIf="!listaReservas || !listaReservas.length">
+      <h1>¡Ups! Aún no hay reservas generadas en el restaurante</h1>
+    </div>
   </div>
 </div>

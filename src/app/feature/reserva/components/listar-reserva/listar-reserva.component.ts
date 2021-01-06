@@ -10,12 +10,14 @@ import { Reserva } from '@reserva/shared/model/reserva';
   styleUrls: ['./listar-reserva.component.css']
 })
 export class ListarReservaComponent implements OnInit {
-  public listaReservas: Observable<Reserva[]>;
+  public listaReservas: Reserva[];
 
   constructor(protected reservaService: ReservaService) { }
 
   ngOnInit() {
-    this.listaReservas = this.reservaService.listar();
+    this.reservaService.listar().subscribe(reservas => {
+      this.listaReservas = reservas;
+    });
   }
 
 }

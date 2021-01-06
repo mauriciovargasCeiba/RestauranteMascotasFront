@@ -9,16 +9,33 @@ import { ReservaService } from '../../shared/service/reserva.service';
 })
 export class CancelarReservaComponent implements OnInit {
   cancelarReservaForm: FormGroup;
+  mensaje: string;
+  tipoMensaje: string;
+
   constructor(protected reservaServices: ReservaService) { }
 
   ngOnInit() {
     this.cancelarReservaForm = new FormGroup({
-      id: new FormControl('', Validators.required)
+      codigo: new FormControl('', Validators.required)
     });
   }
 
   cancelar() {
-    this.reservaServices.cancelar(this.cancelarReservaForm.value.id).subscribe();
+    this.reservaServices.cancelar(this.cancelarReservaForm.value.codigo).subscribe(res => {
+      this.mensaje = `La reserva ${this.cancelarReservaForm.value.codigo} ha sido cancelada con éxito`;
+      this.tipoMensaje = 'exito';
+      this.destruirMensajeAlerta()
+    }, e => {
+      this.mensaje = e.error.mensaje;
+      this.tipoMensaje = 'error';
+      this.destruirMensajeAlerta()
+    });
+  }
+
+  private destruirMensajeAlerta() {
+    setTimeout(() => {
+      this.mensaje = null;
+    }, 8000);
   }
 
 }

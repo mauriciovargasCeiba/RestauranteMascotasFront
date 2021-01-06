@@ -1,110 +1,120 @@
 <div class="container">
   <h1>Registrar Reserva</h1>
-  <h3>Complete el formulario con los datos de la reserva</h3>
+  <h3>Completa el formulario con los datos de la reserva</h3>
   <div class="card">
-    <div class="card-body">
-      <div *ngIf="mensaje" class="row mb-3">
+    <div class="row card-body">
+      <div *ngIf="mensaje" class="row m-3 position-relative">
         <app-alerta [mensaje]="mensaje" [tipo]="tipoMensaje"></app-alerta>
       </div>
-      <form [formGroup]="reservaForm" (ngSubmit)="crear()">
-        <div class="row justify-content-center mb-3">
-          <div class="col-sm-2">
-            <label>Número de mesa:</label>
-          </div>
-          <div class="col-sm-4">
-            <input validar type="number" id="numeroMesaReserva" name="numeroMesa" class="form-control"
-              formControlName="numeroMesa">
-          </div>
-        </div>
-        <div class="row justify-content-center mb-3">
-          <div class="col-sm-2">
-            <label>Fecha:</label>
-          </div>
-          <div class="col-sm-4">
-            <input validar type="datetime-local" id="fechaYHoraReserva" name="fechaYHora" class="form-control"
-              formControlName="fechaYHora">
-          </div>
-        </div>
-        <div class="row justify-content-center mb-3">
-          <div class="col-sm-2">
-            <label>Nombre del cliente:</label>
-          </div>
-          <div class="col-sm-4">
-            <input validar type="text" id="nombreCompletoClienteReserva" name="nombreCompletoCliente"
-              placeholder="Nombre completo del cliente" class="form-control" formControlName="nombreCompletoCliente">
-          </div>
-        </div>
-        <div class="row justify-content-center mb-3">
-          <div class="col-sm-2">
-            <label>Teléfono del cliente:</label>
-          </div>
-          <div class="col-sm-4">
-            <input validar type="tel" id="telefonoClienteReserva" name="telefonoCliente" placeholder="Teléfono del cliente"
-              class="form-control" formControlName="telefonoCliente">
-          </div>
-        </div>
-        <div *ngIf="incluyeMascota" class="row justify-content-center mb-3">
-          <div class="col-sm-2">
-            <label>ID de la mascota:</label>
-          </div>
-          <div class="col-sm-4">
-            <input validar type="number" id="idMascota" name="idMascota" placeholder="ID de la mascota" class="form-control"
-              formControlName="idMascota">
-          </div>
-        </div>
-        <div class="row">
-          <div class="btn-group" role="group">
-            <div class="col-sm-4">
-              <input validar type="checkbox" id="incluyeMascota" name="incluyeMascota" class="form-control btn-check"
-                formControlName="incluyeMascota">
-              <label class="btn btn-outline-primary" for="incluyeMascota">¿Incluye mascota?</label>
+      <div class="col">
+        <form [formGroup]="reservaForm" (ngSubmit)="crear()">
+          <div class="row justify-content-center m-3">
+            <div class="col">
+              <label>Número de mesa:</label>
+            </div>
+            <div class="col">
+              <input validar type="number" id="numeroMesaReserva" name="numeroMesa" class="form-control"
+                formControlName="numeroMesa">
             </div>
           </div>
-        </div>
+          <div class="row justify-content-center m-3">
+            <div class="col">
+              <label>Fecha:</label>
+            </div>
+            <div class="col">
+              <input validar type="datetime-local" id="fechaYHoraReserva" name="fechaYHora" class="form-control"
+                formControlName="fechaYHora">
+            </div>
+          </div>
+          <div class="row justify-content-center m-3">
+            <div class="col">
+              <label>Nombre del cliente:</label>
+            </div>
+            <div class="col">
+              <input validar type="text" id="nombreCompletoClienteReserva" name="nombreCompletoCliente"
+                placeholder="Nombre completo del cliente" class="form-control" formControlName="nombreCompletoCliente">
+            </div>
+          </div>
+          <div class="row justify-content-center m-3">
+            <div class="col">
+              <label>Teléfono del cliente:</label>
+            </div>
+            <div class="col">
+              <input validar type="tel" id="telefonoClienteReserva" name="telefonoCliente"
+                placeholder="Teléfono del cliente" class="form-control" formControlName="telefonoCliente">
+            </div>
+          </div>
+          <div *ngIf="incluyeMascota" class="row justify-content-center m-3">
+            <div class="col">
+              <label>ID de la mascota:</label>
+            </div>
+            <div class="col">
+              <input validar type="number" id="idMascota" name="idMascota" placeholder="ID de la mascota"
+                class="form-control" formControlName="idMascota">
+            </div>
+          </div>
 
-        <div class="row justify-content-center mb-3">
-          <div class="col-sm-8">
-            <div *ngIf="incluyeMascota" class="card">
-              <div class="card-body">
-                <form [formGroup]="mascotaForm" (ngSubmit)="crearMascota()">
-                  <div class="row justify-content-center mb-3">
-                    <div class="col-sm-2">
-                      <label>Nombre de la mascota:</label>
-                    </div>
-                    <div class="col-sm-4">
-                      <input validar type="text" id="nombreMascota" name="nombreMascota" placeholder="Nombre de la mascota"
-                        class="form-control" formControlName="nombre">
-                    </div>
-                  </div>
-                  <div class="row justify-content-center mb-3">
-                    <div class="col-sm-2">
-                      <label>Especie de la mascota:</label>
-                    </div>
-                    <div class="col-sm-4">
-                      <select validar id="especieMascota" name="especieMascota" class="form-control" formControlName="especie">
-                        <option value="" disabled>Seleccione una especie</option>
-                        <option *ngFor="let especie of especies" [ngValue]="especie">{{especie}}</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="row justify-content-center mb-3">
-                    <div class="col-sm-2">
-                      <label>Edad de la mascota:</label>
-                    </div>
-                    <div class="col-sm-4">
-                      <input validar type="number" id="edadMascota" name="edadMascota" placeholder="Edad de la mascota"
-                        class="form-control" formControlName="edad">
-                    </div>
-                  </div>
-                  <button class="btn btn-primary" type="submit" [disabled]="!mascotaForm.valid">Registrar mascota</button>
-                </form>
+          <div class="row justify-content-center m-3">
+            <div class="col-sm-3">
+              <button class="btn btn-primary" type="submit" [disabled]="!reservaForm.valid">Registrar reserva</button>
+            </div>
+          </div>
+
+          <div class="row justify-content-center m-3">
+            <div class="col-sm-3">
+              <div class="form-check form-switch">
+                <input validar type="checkbox" id="incluyeMascota" name="incluyeMascota" class="form-check-input"
+                  formControlName="incluyeMascota">
+                <label class="form-check-label" for="incluyeMascota">¿Incluye mascota?</label>
               </div>
             </div>
           </div>
+        </form>
+      </div>
+
+
+      <div class="col" *ngIf="incluyeMascota">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Aquí puedes registrar una mascota si el cliente nunca ha traído una</h5>
+            <form [formGroup]="mascotaForm" (ngSubmit)="crearMascota()">
+              <div class="row justify-content-center m-3">
+                <div class="col">
+                  <label>Nombre de la mascota:</label>
+                </div>
+                <div class="col">
+                  <input validar type="text" id="nombreMascota" name="nombreMascota" placeholder="Nombre de la mascota"
+                    class="form-control" formControlName="nombre">
+                </div>
+              </div>
+              <div class="row justify-content-center m-3">
+                <div class="col">
+                  <label>Especie de la mascota:</label>
+                </div>
+                <div class="col">
+                  <select validar id="especieMascota" name="especieMascota" class="form-control"
+                    formControlName="especie">
+                    <option value="" disabled>Seleccione una especie</option>
+                    <option *ngFor="let especie of especies" [ngValue]="especie">{{especie}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row justify-content-center m-3">
+                <div class="col">
+                  <label>Edad de la mascota:</label>
+                </div>
+                <div class="col">
+                  <input validar type="number" id="edadMascota" name="edadMascota" placeholder="Edad de la mascota"
+                    class="form-control" formControlName="edad">
+                </div>
+              </div>
+              <button class="btn btn-primary" type="submit" [disabled]="!mascotaForm.valid">Registrar mascota</button>
+            </form>
+          </div>
         </div>
 
-        <button class="btn btn-primary" type="submit" [disabled]="!reservaForm.valid">Registrar reserva</button>
-      </form>
+
+
+      </div>
     </div>
   </div>
-</div>
