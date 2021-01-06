@@ -1,0 +1,23 @@
+<p>listar-producto works!</p>
+  <div class="row">
+    <div class="col-sm-2">
+      <label>Id de reserva:</label>
+    </div>
+    <div class="col-sm-4">
+      <input type="text" id="idReserva" name="id" class="form-control" [(ngModel)]="codigoReserva">
+    </div>
+    <div class="col-sm-4">
+      <button type="button" (click)="consultarProductos(codigoReserva)">Consultar productos con descuento, con código de reserva</button>
+    </div>
+  </div>
+<div id="productos">
+  <ul class="productos">
+    <li *ngFor="let item of listaProductos | async">
+      <span>ID del producto: {{item.id}}, </span>
+      <span>Nombre del producto: {{item.nombre}}, </span>
+      <span>Tipo de producto: {{item.tipo}}, </span>
+      <span>Tipo de cliente: {{item.tipoCliente}}</span>
+      <p>Precio: {{item.precio}}</p>
+    </li>
+  </ul>
+</div>

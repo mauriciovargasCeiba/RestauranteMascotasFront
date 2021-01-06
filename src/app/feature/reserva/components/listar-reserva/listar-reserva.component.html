@@ -1,0 +1,23 @@
+<p>listar-reserva works!</p>
+<div id="reservas">
+  <ul class="reservas">
+    <li *ngFor="let item of listaReservas | async">
+      <p>ID de reserva: {{item.id}}</p>
+      <p>Cliente: {{item.nombreCompletoCliente}}</p>
+      <p>Teléfono: {{item.telefonoCliente}}</p>
+      <p>Número de mesa: {{item.numeroMesa}}</p>
+      <p>Fecha: {{item.fechaYHora}} </p>
+      <p>Mascota: {{item.mascota.nombre}}</p>
+      <p>Código de reserva: {{item.codigoGenerado}}</p>
+      <hr>
+      <p>Descuentos:</p> 
+      <ul>
+        <li *ngFor="let descuento of item.descuentos">
+          <p>Descripción: {{descuento.descripcion}}</p>
+          <p>Porcentaje de descuento: {{descuento.valor}}%</p>
+          <p *ngIf="descuento.vigente">Este descuento se encuentra vigente</p>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
