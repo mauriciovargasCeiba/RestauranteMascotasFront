@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>Cancelar Reserva</h1>
+  <h3>Ingrese el id de la reserva a cancelar</h3>
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="cancelarReservaForm" (ngSubmit)="cancelar()">
+        <div class="row">
+          <div class="col-sm-2">
+            <label>Id de reserva:</label>
+          </div>
+          <div class="col-sm-4">
+            <input validar type="text" id="idReserva" name="id" class="form-control"
+              formControlName="id">
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!cancelarReservaForm.valid">Cancelar reserva</button>
+      </form>
+    </div>
+  </div>
+</div>

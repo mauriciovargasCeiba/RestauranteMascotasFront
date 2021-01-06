@@ -9,16 +9,16 @@ export class ReservaService {
 
   constructor(protected http: HttpService) {}
 
-  public consultar() {
+  public listar() {
     return this.http.doGet<Reserva[]>(`${environment.endpoint}/reservas`, this.http.optsName('consultar reservas'));
   }
 
-  public guardar(reserva: Reserva) {
-    return this.http.doPost<Reserva, boolean>(`${environment.endpoint}/reservas`, reserva,
+  public reservar(reserva: Reserva) {
+    return this.http.doPost<Reserva, any>(`${environment.endpoint}/reservas`, reserva,
                                                 this.http.optsName('crear/actualizar reservas'));
   }
 
-  public eliminar(codigoReserva: string) {
+  public cancelar(codigoReserva: string) {
     return this.http.doDelete<boolean>(`${environment.endpoint}/reservas/${codigoReserva}`,
                                                  this.http.optsName('eliminar reservas'));
   }

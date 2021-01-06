@@ -28,10 +28,10 @@ describe('ReservaService', () => {
 
   it('deberia listar reservas', () => {
     const dummyReservas = [
-      new Reserva('1', 1, new Date(), 'Reserva 1', '1234567890', '1234', '00021203660000_1234'),
-      new Reserva('2', 2, new Date(), 'Reserva 2', '0987654321', '56789', '00021203660000_56789')
+      new Reserva(1, 1, new Date(), 'Reserva 1', '1234567890', '1234', '00021203660000_1234'),
+      new Reserva(2, 2, new Date(), 'Reserva 2', '0987654321', '56789', '00021203660000_56789')
     ];
-    service.consultar().subscribe(reservas => {
+    service.listar().subscribe(reservas => {
       expect(reservas.length).toBe(2);
       expect(reservas).toEqual(dummyReservas);
     });
@@ -40,9 +40,9 @@ describe('ReservaService', () => {
     req.flush(dummyReservas);
   });
 
-  it('deberia crear un reserva', () => {
-    const dummyReserva = new Reserva('1', 1, new Date(), 'Reserva 1', '1234567890', '1234', '00021203660000_1234');
-    service.guardar(dummyReserva).subscribe((respuesta) => {
+  it('deberia reservar', () => {
+    const dummyReserva = new Reserva(1, 1, new Date(), 'Reserva 1', '1234567890', '1234', '00021203660000_1234');
+    service.reservar(dummyReserva).subscribe((respuesta) => {
       expect(respuesta).toEqual(true);
     });
     const req = httpMock.expectOne(apiEndpointReservas);
@@ -50,9 +50,9 @@ describe('ReservaService', () => {
     req.event(new HttpResponse<boolean>({body: true}));
   });
 
-  it('deberia eliminar un reserva', () => {
-    const dummyReserva = new Reserva('1', 1, new Date(), 'Reserva 1', '1234567890', '1234', '00021203660000_1234');
-    service.eliminar(dummyReserva.codigoGenerado).subscribe((respuesta) => {
+  it('deberia cancelar un reserva', () => {
+    const dummyReserva = new Reserva(1, 1, new Date(), 'Reserva 1', '1234567890', '1234', '00021203660000_1234');
+    service.cancelar(dummyReserva.codigoGenerado).subscribe((respuesta) => {
       expect(respuesta).toEqual(true);
     });
     const req = httpMock.expectOne(`${apiEndpointReservas}/1`);

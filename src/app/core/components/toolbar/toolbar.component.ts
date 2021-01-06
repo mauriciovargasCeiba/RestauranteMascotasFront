@@ -4,10 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-toolbar',
   templateUrl: 'toolbar.component.html',
   styles: [`:host {
-    background-color: #106cc8;
-    color: rgba(255, 255, 255, 0.87);
     display: block;
-    height: 48px;
     padding: 0 16px;
   }
 

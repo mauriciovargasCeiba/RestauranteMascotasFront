@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 
 import { ReservaRoutingModule } from './reserva-routing.module';
-import { BorrarReservaComponent } from './components/borrar-reserva/borrar-reserva.component';
+import { CancelarReservaComponent } from './components/cancelar-reserva/cancelar-reserva.component';
 import { ListarReservaComponent } from './components/listar-reserva/listar-reserva.component';
-import { CrearReservaComponent } from './components/crear-reserva/crear-reserva.component';
+import { ReservarComponent } from './components/reservar/reservar.component';
 import { ReservaComponent } from './components/reserva/reserva.component';
 import { SharedModule } from '@shared/shared.module';
 import { ReservaService } from './shared/service/reserva.service';
@@ -12,9 +12,9 @@ import { MascotaService } from './shared/service/mascota.service';
 
 @NgModule({
   declarations: [
-    CrearReservaComponent,
+    ReservarComponent,
     ListarReservaComponent,
-    BorrarReservaComponent,
+    CancelarReservaComponent,
     ReservaComponent
   ],
   imports: [

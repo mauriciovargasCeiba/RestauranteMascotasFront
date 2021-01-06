@@ -1,8 +1,8 @@
-<nav>
-  <a id="linkReserva" routerLink="./" routerLinkActive="active"
-    [routerLinkActiveOptions]="{ exact: true }">Reserva</a>
-  <a id="linkCrearReserva" routerLink="./crear" routerLinkActive="active">Crear reserva</a>
-  <a id="linkBorrarReserva" routerLink="./borrar" routerLinkActive="active">Borrar reserva</a>
-  <a id="linkListarReserva" routerLink="./listar" routerLinkActive="active">listar reserva</a>
+<nav  class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="nav-link active" id="linkReservar" routerLink="./reservar" routerLinkActive="active">Reservar</a>
+    <a class="nav-link active" id="linkCancelarReserva" routerLink="./cancelar" routerLinkActive="active">Cancelar reserva</a>
+    <a class="nav-link active" id="linkListarReserva" routerLink="./listar" routerLinkActive="active">Listar reservas</a>
+  </div>
 </nav>
 <router-outlet></router-outlet>

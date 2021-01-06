@@ -15,7 +15,7 @@ export class ListarReservaComponent implements OnInit {
   constructor(protected reservaService: ReservaService) { }
 
   ngOnInit() {
-    this.listaReservas = this.reservaService.consultar();
+    this.listaReservas = this.reservaService.listar();
   }
 
 }

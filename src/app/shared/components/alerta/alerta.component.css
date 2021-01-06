@@ -1,0 +1,9 @@
+.exito {
+    background-color: green;
+    color: white;
+}
+
+.error {
+    background-color: red;
+    color: white;
+}

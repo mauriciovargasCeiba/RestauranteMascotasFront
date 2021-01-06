@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CrearReservaComponent } from './components/crear-reserva/crear-reserva.component';
+import { CancelarReservaComponent } from './components/cancelar-reserva/cancelar-reserva.component';
+import { ReservarComponent } from './components/reservar/reservar.component';
 import { ListarReservaComponent } from './components/listar-reserva/listar-reserva.component';
-import { BorrarReservaComponent } from './components/borrar-reserva/borrar-reserva.component';
 import { ReservaComponent } from './components/reserva/reserva.component';
 
 
@@ -12,16 +12,16 @@ const routes: Routes = [
     component: ReservaComponent,
     children: [
       {
-        path: 'crear',
-        component: CrearReservaComponent
+        path: 'reservar',
+        component: ReservarComponent
       },
       {
         path: 'listar',
         component: ListarReservaComponent
       },
       {
-        path: 'borrar',
-        component: BorrarReservaComponent
+        path: 'cancelar',
+        component: CancelarReservaComponent
       }
     ]
   }

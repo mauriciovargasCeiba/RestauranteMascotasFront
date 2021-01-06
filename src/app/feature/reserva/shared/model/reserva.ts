@@ -1,5 +1,5 @@
 export class Reserva {
-    id: string;
+    id: number;
     numeroMesa: number;
     fechaYHora: Date;
     nombreCompletoCliente: string;
@@ -7,7 +7,7 @@ export class Reserva {
     idMascota: string;
     codigoGenerado: string;
 
-    constructor(id: string, numeroMesa: number, fechaYHora: Date, nombreCompletoCliente: string, telefonoCliente: string, idMascota: string, codigoGenerado: string) {
+    constructor(id: number, numeroMesa: number, fechaYHora: Date, nombreCompletoCliente: string, telefonoCliente: string, idMascota: string, codigoGenerado: string) {
         this.id = id;
         this.numeroMesa = numeroMesa;
         this.fechaYHora = fechaYHora;
