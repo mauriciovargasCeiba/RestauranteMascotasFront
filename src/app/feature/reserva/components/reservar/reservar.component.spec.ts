@@ -54,7 +54,7 @@ describe('ReservarComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('formulario es invalido cuando esta vacio', () => {
+  it('deberia mostrar que el formulario es invalido cuando esta vacio', () => {
     expect(component.reservaForm.valid).toBeFalsy();
   });
 
@@ -71,7 +71,7 @@ describe('ReservarComponent', () => {
     expect(reservaService.reservar).toHaveBeenCalled();
   });
 
-  it('crear un formulario para registrar una mascota', () => {
+  it('deberia crear un formulario para registrar una mascota', () => {
     expect(component.mascotaForm).toBeUndefined();
 
     const checkboxIncluyeMascota = fixture.debugElement.query(By.css('#incluyeMascota')).nativeElement;
@@ -81,7 +81,7 @@ describe('ReservarComponent', () => {
     expect(component.mascotaForm).not.toBeNull();
   });
 
-  it('registrar una mascota', () => {
+  it('deberia registrar una mascota', () => {
     const checkboxIncluyeMascota = fixture.debugElement.query(By.css('#incluyeMascota')).nativeElement;
     checkboxIncluyeMascota.click();
     fixture.detectChanges();
@@ -95,7 +95,7 @@ describe('ReservarComponent', () => {
     expect(component.idMascota).toBe(1);
   });
 
-  it('crear y destruir formulario mascota', () => {
+  it('deberia crear y destruir formulario mascota', () => {
     const checkboxIncluyeMascota = fixture.debugElement.query(By.css('#incluyeMascota')).nativeElement;
     checkboxIncluyeMascota.click();
     fixture.detectChanges();
@@ -106,7 +106,7 @@ describe('ReservarComponent', () => {
     expect(component.mascotaForm).toBeNull();
   });
 
-  it('mostrar error al reservar', () => {
+  it('deberia mostrar error al reservar', () => {
     reservaService.reservar = jasmine.createSpy().and.returnValue(throwError({ error: { mensaje: 'Mensaje de error de reserva' }}))
     component.reservaForm.controls.numeroMesa.setValue(1);
     component.reservaForm.controls.fechaYHora.setValue('2020-03-01');
@@ -119,7 +119,7 @@ describe('ReservarComponent', () => {
     expect(component.alerta.tipoMensaje).toBe('error');
   });
 
-  it('mostrar error al registrar mascota', () => {
+  it('deberia mostrar error al registrar mascota', () => {
     mascotaService.registrar = jasmine.createSpy().and.returnValue(throwError({ error: { mensaje: 'Mensaje de error de mascota' }}))
     const checkboxIncluyeMascota = fixture.debugElement.query(By.css('#incluyeMascota')).nativeElement;
     checkboxIncluyeMascota.click();

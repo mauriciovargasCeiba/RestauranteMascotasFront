@@ -1,5 +1,5 @@
 import { browser, by, element } from 'protractor';
-import { ConAlertasPage } from '../alerta/alerta.po';
+import { ConAlertasPage } from '../../shared/alerta.po';
 
 export class CancelarReservaPage extends ConAlertasPage {
     private inputCodigoReserva = element(by.id('codigoReserva'));

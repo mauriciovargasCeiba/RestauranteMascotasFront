@@ -46,7 +46,7 @@ describe('MostrarReservaComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('mostrar una reserva', () => {
+  it('deberia mostrar una reserva', () => {
     component.mostrarReservaForm.controls.codigo.setValue('0002120366000001_0000');
 
     component.mostrar();
@@ -54,7 +54,7 @@ describe('MostrarReservaComponent', () => {
     expect(component.reserva).toBe(reserva);
   });
 
-  it('mostrar error al mostrar reserva', () => {
+  it('deberia mostrar error al mostrar reserva', () => {
     reservaService.mostrar = jasmine.createSpy().and.returnValue(throwError({ error: { mensaje: 'Mensaje de error de reserva' }}))
     component.mostrarReservaForm.controls.codigo.setValue('0002120366000001_0000');
     

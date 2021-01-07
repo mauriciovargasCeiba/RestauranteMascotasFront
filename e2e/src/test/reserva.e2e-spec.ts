@@ -37,8 +37,8 @@ describe('workspace-project Reserva', () => {
         const ESPECIE_MASCOTA = 'PERRO';
         const EDAD_MASCOTA = 5;
 
-        const ID_ESPERADO_MASCOTA = 1;
-        const CODIGO_ESPERADO_RESERVA = '0022120012142201_1';
+        const ID_ESPERADO_MASCOTA = 2;
+        const CODIGO_ESPERADO_RESERVA = '0022120012142201_2';
 
         /* CREAR RESERVA */
         page.navigateTo();

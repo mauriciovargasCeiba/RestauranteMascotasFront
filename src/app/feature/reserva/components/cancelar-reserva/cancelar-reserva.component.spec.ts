@@ -42,13 +42,13 @@ describe('CancelarReservaComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('cancelar una reserva', () => {
+  it('deberia cancelar una reserva', () => {
     component.cancelarReservaForm.controls.codigo.setValue('0002120366000001_0000');
     component.cancelar();
     expect(component.alerta.mensaje).toBe('La reserva 0002120366000001_0000 ha sido cancelada con éxito');
   });
 
-  it('mostrar error al cancelar reserva', () => {
+  it('deberia mostrar error al cancelar reserva', () => {
     reservaService.cancelar = jasmine.createSpy().and.returnValue(throwError({ error: { mensaje: 'Mensaje de error de reserva' }}))
     component.cancelarReservaForm.controls.codigo.setValue('0002120366000001_0000');
     

@@ -3,7 +3,7 @@
   <h3>Ingresa el id de la mascota a eliminar</h3>
   <div class="card">
     <div class="card-body">
-      <div *ngIf="alerta" class="row m-3 position-relative">
+      <div *ngIf="alerta" class="row m-3 position-relative" id="alerta">
         <app-alerta [mensaje]="alerta.mensaje" [tipo]="alerta.tipoMensaje"></app-alerta>
       </div>
       <form [formGroup]="eliminarMascotaForm" (ngSubmit)="eliminar()">
@@ -16,7 +16,7 @@
               formControlName="id">
           </div>
         </div>
-        <button class="btn btn-primary" type="submit" [disabled]="!eliminarMascotaForm.valid">Eliminar mascota</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!eliminarMascotaForm.valid" id="eliminarMascota">Eliminar mascota</button>
       </form>
     </div>
   </div>

@@ -43,13 +43,13 @@ describe('EliminarMascotaComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('eliminar una mascota', () => {
+  it('deberia eliminar una mascota', () => {
     component.eliminarMascotaForm.controls.id.setValue(1);
     component.eliminar();
     expect(component.alerta.mensaje).toBe('La mascota con id 1 ha sido eliminada con éxito');
   });
 
-  it('mostrar error al eliminar mascota', () => {
+  it('deberia mostrar error al eliminar mascota', () => {
     mascotaService.eliminar = jasmine.createSpy().and.returnValue(throwError({ error: { mensaje: 'Mensaje de error de mascota' }}))
     component.eliminarMascotaForm.controls.id.setValue(1);
     
