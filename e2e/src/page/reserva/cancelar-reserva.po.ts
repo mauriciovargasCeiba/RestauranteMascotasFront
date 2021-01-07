@@ -1,4 +1,4 @@
-import { by, element } from 'protractor';
+import { browser, by, element } from 'protractor';
 import { ConAlertasPage } from '../alerta/alerta.po';
 
 export class CancelarReservaPage extends ConAlertasPage {
@@ -11,6 +11,8 @@ export class CancelarReservaPage extends ConAlertasPage {
     }
 
     async clickBotonCancelar() {
+        browser.actions().mouseMove(this.buttonCancelarReserva).perform();
+        browser.sleep(500);
         await this.buttonCancelarReserva.click();
     }
     

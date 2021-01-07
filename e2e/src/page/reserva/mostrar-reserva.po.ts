@@ -1,4 +1,4 @@
-import { by, element } from 'protractor';
+import { browser, by, element } from 'protractor';
 
 export class MostrarReservaPage {
     private inputCodigoReserva = element(by.id('codigoReserva'));
@@ -12,6 +12,8 @@ export class MostrarReservaPage {
     }
     
     async clickBotonMostrarReserva() {
+        browser.actions().mouseMove(this.buttonMostrarReserva).perform();
+        browser.sleep(500);
         await this.buttonMostrarReserva.click();
     }
 

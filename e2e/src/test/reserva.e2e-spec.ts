@@ -27,12 +27,18 @@ describe('workspace-project Reserva', () => {
         cancelarReserva = new CancelarReservaPage();
     });
 
-    it('Deberia crear reservar sin mascota, listar todas las reservas, mostrar una reserva específica y cancelar la reserva', () => {
+    it('Deberia crear reservar con mascota, listar todas las reservas, mostrar una reserva específica y cancelar la reserva', () => {
         const NUMERO_MESA = 1;
         const FECHA_HORA = '01-12-2120' + protractor.Key.TAB + '22:22';
         const NOMBRE_COMPLETO_CLIENTE = 'Cliente Test';
         const TELEFONO_CLIENTE = '1234567';
 
+        const NOMBRE_MASCOTA = 'Mascota Test';
+        const ESPECIE_MASCOTA = 'PERRO';
+        const EDAD_MASCOTA = 5;
+
+        const ID_ESPERADO_MASCOTA = 1;
+        const CODIGO_ESPERADO_RESERVA = '0022120012142201_1';
 
         /* CREAR RESERVA */
         page.navigateTo();
@@ -42,25 +48,39 @@ describe('workspace-project Reserva', () => {
         reservar.ingresarFechaYHora(FECHA_HORA);
         reservar.ingresarNombreCompletoCliente(NOMBRE_COMPLETO_CLIENTE)
         reservar.ingresarTelefonoCliente(TELEFONO_CLIENTE);
+        
+        reservar.clickCheckboxIncluyeMascota();
+
+        const formularioRegistroMascota = reservar.obtenerFormularioRegistroMascota();
+        browser.wait(ExpectedConditions.visibilityOf(formularioRegistroMascota), 1000, formularioRegistroMascota.locator());
+        expect(formularioRegistroMascota).toBeTruthy();
+
+        reservar.ingresarNombreMascota(NOMBRE_MASCOTA);
+        reservar.ingresarEspecieMascota(ESPECIE_MASCOTA);
+        reservar.ingresarEdadMascota(EDAD_MASCOTA);
+
+        const botonRegistrarMascota = reservar.obtenerBotonRegistrarMascota();
+        browser.wait(ExpectedConditions.elementToBeClickable(botonRegistrarMascota), 1000, botonRegistrarMascota.locator());
+        
+        reservar.clickBotonRegistrarMascota();
+
+        const alertaRegistrarMascota = reservar.obtenerAlerta();
+        expect(alertaRegistrarMascota).toBeTruthy(); 
+        browser.wait(ExpectedConditions.visibilityOf(alertaRegistrarMascota), 1000, alertaRegistrarMascota.locator());
+        const mensajeAlertaRegistrarMascota = reservar.obtenerMensajeAlerta();
+        expect(mensajeAlertaRegistrarMascota).toContain(ID_ESPERADO_MASCOTA);
 
         const botonReservar = reservar.obtenerBotonReservar();
         browser.wait(ExpectedConditions.elementToBeClickable(botonReservar), 1000, botonReservar.locator());
 
         reservar.clickBotonReservar();
 
-        const alertaReservar = reservar.obtenerAlerta();
-        expect(alertaReservar).toBeTruthy(); 
-        
-        const CODIGO_ESPERADO_RESERVA = '0002120012142201_0000';
-        browser.wait(ExpectedConditions.visibilityOf(alertaReservar), 1000, alertaReservar.locator());
-
-        let mensajeAlertaReservar = reservar.obtenerMensajeAlerta();
+        const mensajeAlertaReservar = reservar.obtenerMensajeAlerta();
         expect(mensajeAlertaReservar).toContain(CODIGO_ESPERADO_RESERVA); // ¿Test frágil?
 
 
         /* LISTAR TODAS LAS RESERVAS */
         reservaMain.clickLinkListarReservas();
-
         const totalReservas = listaReservas.contarReservas();
         expect(totalReservas).toBeGreaterThan(0);
 
@@ -74,6 +94,7 @@ describe('workspace-project Reserva', () => {
             expect(detalles[0]).toContain(NOMBRE_COMPLETO_CLIENTE);
         });
 
+
         /* CANCELAR LA RESERVA CREADA */
         reservaMain.clickLinkCancelarReserva();
         cancelarReserva.ingresarCodigo(CODIGO_ESPERADO_RESERVA);
@@ -84,9 +105,8 @@ describe('workspace-project Reserva', () => {
         
         browser.wait(ExpectedConditions.visibilityOf(alertaCancelarReserva), 1000, alertaCancelarReserva.locator());
 
-        let mensajeCancelarAlerta = reservar.obtenerMensajeAlerta();
+        const mensajeCancelarAlerta = reservar.obtenerMensajeAlerta();
         expect(mensajeCancelarAlerta).toContain(CODIGO_ESPERADO_RESERVA);
-
     });
 
 });
