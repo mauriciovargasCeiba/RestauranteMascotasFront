@@ -11,7 +11,8 @@ export class AppComponent {
   title = 'app-base';
   public paginas: MenuItem[] = [
     { url: '/home', nombre: 'Inicio' },
-    { url: '/reserva', nombre: 'Reservas' }
+    { url: '/reserva', nombre: 'Reservas' },
+    { url: '/mascota', nombre: 'Mascotas' }
 
   ];
 

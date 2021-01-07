@@ -10,7 +10,7 @@ import { HttpService } from 'src/app/core/services/http.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LOCALE_ID } from '@angular/core';
 import localeCo from '@angular/common/locales/es-CO';
-import { MascotaService } from '@reserva/shared/service/mascota.service';
+import { MascotaService } from '@core/services/mascota.service';
 import { By } from '@angular/platform-browser';
 registerLocaleData(localeCo);
 

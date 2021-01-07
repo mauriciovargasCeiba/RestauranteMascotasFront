@@ -1,0 +1,19 @@
+<div class="container">
+  <div id="mascotas">
+    <ul class="mascotas row g-2 list-unstyled" id="listaMascotas">
+      <li *ngFor="let mascota of listaMascotas" class="col-12 col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <p>ID de mascota: {{mascota.id}}</p>
+            <p>Nombre: {{mascota.nombre}}</p>
+            <p>Especie: {{mascota.especie}}</p>
+            <p>Edad: {{mascota.edad}} años</p>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div *ngIf="!listaMascotas || !listaMascotas.length" id="noExistenMascotas">
+      <h1>¡Ups! Aún no hay mascotas registradas en el restaurante</h1>
+    </div>
+  </div>
+</div>

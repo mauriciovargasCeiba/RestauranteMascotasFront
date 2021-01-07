@@ -22,9 +22,9 @@ export class CancelarReservaComponent implements OnInit {
   }
 
   cancelar() {
-    this.reservaServices.cancelar(this.cancelarReservaForm.value.codigo).subscribe(() => {
+    this.reservaServices.cancelar(this.cancelarReservaForm.value.codigo.trim()).subscribe(() => {
       this.alerta = {
-        mensaje: `La reserva ${this.cancelarReservaForm.value.codigo} ha sido cancelada con éxito`,
+        mensaje: `La reserva ${this.cancelarReservaForm.value.codigo.trim()} ha sido cancelada con éxito`,
         tipoMensaje: 'exito'
       };
     }, e => {

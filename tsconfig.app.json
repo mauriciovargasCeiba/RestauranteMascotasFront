@@ -17,6 +17,9 @@
       "@reserva/*": [
         "src/app/feature/reserva/*"
       ],
+      "@mascota/*": [
+        "src/app/feature/mascota/*"
+      ],
       "@shared/*": [
         "src/app/shared/*"
       ]

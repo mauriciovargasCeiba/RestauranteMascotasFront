@@ -9,7 +9,7 @@ import { ReservaService } from '@reserva/shared/service/reserva.service';
 import { HttpService } from '@core/services/http.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { of, throwError } from 'rxjs';
-import { Mascota } from '@reserva/shared/model/mascota';
+import { Mascota } from '@core/modelo/mascota';
 import { Reserva } from '@reserva/shared/model/reserva';
 
 describe('MostrarReservaComponent', () => {

@@ -7,7 +7,7 @@ import { ReservarComponent } from './components/reservar/reservar.component';
 import { ReservaComponent } from './components/reserva/reserva.component';
 import { SharedModule } from '@shared/shared.module';
 import { ReservaService } from './shared/service/reserva.service';
-import { MascotaService } from './shared/service/mascota.service';
+import { MascotaService } from '../../core/services/mascota.service';
 import { MostrarReservaComponent } from './components/mostrar-reserva/mostrar-reserva.component';
 
 

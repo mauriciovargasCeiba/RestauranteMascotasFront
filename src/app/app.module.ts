@@ -9,6 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { ReservaModule } from './feature/reserva/reserva.module';
 import { registerLocaleData } from '@angular/common';
 import localeCo from '@angular/common/locales/es-CO';
+import { MascotaModule } from './feature/mascota/mascota.module';
 registerLocaleData(localeCo);
 
 @NgModule({
@@ -20,6 +21,7 @@ registerLocaleData(localeCo);
     BrowserModule,
     AppRoutingModule,
     ReservaModule,
+    MascotaModule,
     CoreModule
   ],
   providers: [

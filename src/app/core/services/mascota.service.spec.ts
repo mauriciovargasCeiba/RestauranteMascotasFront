@@ -4,7 +4,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { MascotaService } from './mascota.service';
 import { environment } from 'src/environments/environment';
 import { HttpService } from 'src/app/core/services/http.service';
-import { Mascota } from '../model/mascota';
+import { Mascota } from '../modelo/mascota';
 import { HttpResponse } from '@angular/common/http';
 
 describe('MascotaService', () => {

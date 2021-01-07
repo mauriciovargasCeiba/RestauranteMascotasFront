@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>Eliminar Mascota</h1>
+  <h3>Ingresa el id de la mascota a eliminar</h3>
+  <div class="card">
+    <div class="card-body">
+      <div *ngIf="alerta" class="row m-3 position-relative">
+        <app-alerta [mensaje]="alerta.mensaje" [tipo]="alerta.tipoMensaje"></app-alerta>
+      </div>
+      <form [formGroup]="eliminarMascotaForm" (ngSubmit)="eliminar()">
+        <div class="row m-3">
+          <div class="col-sm-2">
+            <label>Id de mascota:</label>
+          </div>
+          <div class="col-sm-4">
+            <input validar type="number" id="idMascota" name="id" class="form-control"
+              formControlName="id">
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!eliminarMascotaForm.valid">Eliminar mascota</button>
+      </form>
+    </div>
+  </div>
+</div>

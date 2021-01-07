@@ -8,7 +8,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ReservaService } from '../../shared/service/reserva.service';
 import { Reserva } from '../../shared/model/reserva';
 import { HttpService } from 'src/app/core/services/http.service';
-import { Mascota } from '@reserva/shared/model/mascota';
+import { Mascota } from '@core/modelo/mascota';
 
 describe('ListarReservaComponent', () => {
   let component: ListarReservaComponent;

@@ -3,8 +3,8 @@ import { ReservaService } from '../../shared/service/reserva.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { formatDate } from '@angular/common';
 import { Reserva } from '@reserva/shared/model/reserva';
-import { MascotaService } from '@reserva/shared/service/mascota.service';
-import { Mascota } from '@reserva/shared/model/mascota';
+import { MascotaService } from '@core/services/mascota.service';
+import { Mascota } from '@core/modelo/mascota';
 import { Alerta } from '@shared/model/alerta';
 
 @Component({

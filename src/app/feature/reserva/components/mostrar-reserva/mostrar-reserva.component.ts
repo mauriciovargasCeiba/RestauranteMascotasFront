@@ -23,7 +23,7 @@ export class MostrarReservaComponent implements OnInit {
   }
 
   mostrar() {
-    this.reservaServices.mostrar(this.mostrarReservaForm.value.codigo).subscribe(reserva => {
+    this.reservaServices.mostrar(this.mostrarReservaForm.value.codigo.trim()).subscribe(reserva => {
       this.reserva = reserva;
       this.alerta = null;
     }, e => {
