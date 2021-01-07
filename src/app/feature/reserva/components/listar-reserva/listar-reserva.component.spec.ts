@@ -16,8 +16,8 @@ describe('ListarReservaComponent', () => {
   let reservaService: ReservaService;
   const mascota: Mascota = new Mascota(1, 'Mascota 1', 'PERRO', 5);
   const listaReservas: any[] = [
-    Object.assign(new Reserva(1, 1, new Date(), 'Reserva 1', '1234567', '1234', '00021203660000_1234'), {mascota}),
-    Object.assign(new Reserva(2, 2, new Date(), 'Reserva 2', '0987654', '56789','00021203660000_56789'), {mascota})
+    Object.assign(new Reserva(1, 1, new Date(), 'Reserva 1', '1234567', '1234', '0002120366000001_1234'), {mascota}),
+    Object.assign(new Reserva(2, 2, new Date(), 'Reserva 2', '0987654', '56789','0002120366000002_56789'), {mascota})
   ];
 
   beforeEach(async(() => {

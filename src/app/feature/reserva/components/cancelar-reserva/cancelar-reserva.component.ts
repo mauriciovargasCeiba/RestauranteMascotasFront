@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Alerta } from '@shared/model/alerta';
 import { ReservaService } from '../../shared/service/reserva.service';
 
 @Component({
@@ -9,8 +10,8 @@ import { ReservaService } from '../../shared/service/reserva.service';
 })
 export class CancelarReservaComponent implements OnInit {
   cancelarReservaForm: FormGroup;
-  mensaje: string;
-  tipoMensaje: string;
+
+  alerta: Alerta;
 
   constructor(protected reservaServices: ReservaService) { }
 
@@ -22,20 +23,16 @@ export class CancelarReservaComponent implements OnInit {
 
   cancelar() {
     this.reservaServices.cancelar(this.cancelarReservaForm.value.codigo).subscribe(() => {
-      this.mensaje = `La reserva ${this.cancelarReservaForm.value.codigo} ha sido cancelada con éxito`;
-      this.tipoMensaje = 'exito';
-      this.destruirMensajeAlerta()
+      this.alerta = {
+        mensaje: `La reserva ${this.cancelarReservaForm.value.codigo} ha sido cancelada con éxito`,
+        tipoMensaje: 'exito'
+      };
     }, e => {
-      this.mensaje = e.error.mensaje;
-      this.tipoMensaje = 'error';
-      this.destruirMensajeAlerta()
+      this.alerta = {
+        mensaje: e.error.mensaje,
+        tipoMensaje: 'error'
+      };
     });
-  }
-
-  private destruirMensajeAlerta() {
-    setTimeout(() => {
-      this.mensaje = null;
-    }, 8000);
   }
 
 }

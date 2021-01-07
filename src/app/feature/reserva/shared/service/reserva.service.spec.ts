@@ -28,8 +28,8 @@ describe('ReservaService', () => {
 
   it('deberia listar reservas', () => {
     const dummyReservas = [
-      new Reserva(1, 1, new Date(), 'Reserva 1', '1234567890', '1234', '00021203660000_1234'),
-      new Reserva(2, 2, new Date(), 'Reserva 2', '0987654321', '56789', '00021203660000_56789')
+      new Reserva(1, 1, new Date(), 'Reserva 1', '1234567890', '1234', '0002120366000001_1234'),
+      new Reserva(2, 2, new Date(), 'Reserva 2', '0987654321', '56789', '0002120366000001_56789')
     ];
     service.listar().subscribe(reservas => {
       expect(reservas.length).toBe(2);
@@ -40,8 +40,18 @@ describe('ReservaService', () => {
     req.flush(dummyReservas);
   });
 
+  it('deberia mostrar una reserva', () => {
+    const dummyReserva = new Reserva(1, 1, new Date(), 'Reserva 1', '1234567890', '1234', '0002120366000001_1234');
+    service.mostrar(dummyReserva.codigoGenerado).subscribe((respuesta) => {
+      expect(respuesta).toEqual(dummyReserva);
+    });
+    const req = httpMock.expectOne(`${apiEndpointReservas}/0002120366000001_1234`);
+    expect(req.request.method).toBe('GET');
+    req.flush(dummyReserva);
+  });
+
   it('deberia reservar', () => {
-    const dummyReserva = new Reserva(1, 1, new Date(), 'Reserva 1', '1234567890', '1234', '00021203660000_1234');
+    const dummyReserva = new Reserva(1, 1, new Date(), 'Reserva 1', '1234567890', '1234', '0002120366000001_1234');
     service.reservar(dummyReserva).subscribe((respuesta) => {
       expect(respuesta).toEqual(true);
     });
@@ -50,12 +60,12 @@ describe('ReservaService', () => {
     req.event(new HttpResponse<boolean>({body: true}));
   });
 
-  it('deberia cancelar un reserva', () => {
-    const dummyReserva = new Reserva(1, 1, new Date(), 'Reserva 1', '1234567890', '1234', '00021203660000_1234');
+  it('deberia cancelar una reserva', () => {
+    const dummyReserva = new Reserva(1, 1, new Date(), 'Reserva 1', '1234567890', '1234', '0002120366000001_1234');
     service.cancelar(dummyReserva.codigoGenerado).subscribe((respuesta) => {
       expect(respuesta).toEqual(true);
     });
-    const req = httpMock.expectOne(`${apiEndpointReservas}/00021203660000_1234`);
+    const req = httpMock.expectOne(`${apiEndpointReservas}/0002120366000001_1234`);
     expect(req.request.method).toBe('DELETE');
     req.event(new HttpResponse<boolean>({body: true}));
   });

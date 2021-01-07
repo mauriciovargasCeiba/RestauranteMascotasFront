@@ -13,6 +13,11 @@ export class ReservaService {
     return this.http.doGet<Reserva[]>(`${environment.endpoint}/reservas`, this.http.optsName('consultar reservas'));
   }
 
+  public mostrar(codigoReserva: string) {
+    return this.http.doGet<Reserva>(`${environment.endpoint}/reservas/${codigoReserva}`,
+                                                 this.http.optsName('mostrar reserva'));
+  }
+
   public reservar(reserva: Reserva) {
     return this.http.doPost<Reserva, any>(`${environment.endpoint}/reservas`, reserva,
                                                 this.http.optsName('crear/actualizar reservas'));

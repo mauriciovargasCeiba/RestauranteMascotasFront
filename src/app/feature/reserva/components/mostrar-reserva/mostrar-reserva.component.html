@@ -1,7 +1,25 @@
 <div class="container">
-  <div id="reservas">
-    <ul class="reservas row g-2 list-unstyled" id="listaReservas">
-      <li *ngFor="let reserva of listaReservas" class="col-4">
+  <h1>Mostrar Reserva</h1>
+  <h3>Ingresa el código de la reserva a mostrar</h3>
+  <div class="card">
+    <div class="card-body">
+      <div *ngIf="alerta" class="row m-3 position-relative">
+        <app-alerta [mensaje]="alerta.mensaje" [tipo]="alerta.tipoMensaje"></app-alerta>
+      </div>
+      <form [formGroup]="mostrarReservaForm" (ngSubmit)="mostrar()">
+        <div class="row m-3">
+          <div class="col-sm-2">
+            <label>Código de reserva:</label>
+          </div>
+          <div class="col-sm-4">
+            <input validar type="text" id="codigoReserva" name="codigo" class="form-control"
+              formControlName="codigo">
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!mostrarReservaForm.valid">Mostrar reserva</button>
+      </form>
+
+      <div *ngIf="reserva" class="m-3">
         <div class="card">
           <div class="card-body">
             <p>ID de reserva: {{reserva.id}}</p>
@@ -24,10 +42,8 @@
             </div>
           </div>
         </div>
-      </li>
-    </ul>
-    <div *ngIf="!listaReservas || !listaReservas.length" id="noExistenReservas">
-      <h1>¡Ups! Aún no hay reservas generadas en el restaurante</h1>
+      </div>
+
     </div>
   </div>
 </div>

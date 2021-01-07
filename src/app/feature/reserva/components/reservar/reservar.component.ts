@@ -5,6 +5,7 @@ import { formatDate } from '@angular/common';
 import { Reserva } from '@reserva/shared/model/reserva';
 import { MascotaService } from '@reserva/shared/service/mascota.service';
 import { Mascota } from '@reserva/shared/model/mascota';
+import { Alerta } from '@shared/model/alerta';
 
 @Component({
   selector: 'app-reservar',
@@ -18,9 +19,8 @@ export class ReservarComponent implements OnInit {
   especies: string[] = ['PERRO', 'GATO'];
   idMascota: number;
 
-  mensaje: string;
-  tipoMensaje: string;
-
+  alerta: Alerta;
+  
   constructor(protected reservaServices: ReservaService, protected mascotaServices: MascotaService) { }
 
   ngOnInit() {
@@ -38,13 +38,15 @@ export class ReservarComponent implements OnInit {
   reservar() {
     this.formatearFechaYHora(this.reservaForm);
     this.reservaServices.reservar(this.reservaForm.value as Reserva).subscribe(respuesta => {
-      this.mensaje = `La reserva ha sido creada con éxito. Código de reserva: ${Object.values(respuesta.valor)[0]}`;
-      this.tipoMensaje = 'exito';
-      this.destruirMensajeAlerta();
+      this.alerta = {
+        mensaje: `La reserva ha sido creada con éxito. Código de reserva: ${Object.values(respuesta.valor)[0]}`,
+        tipoMensaje:'exito'
+      };
     }, e => {
-      this.mensaje = e.error.mensaje;
-      this.tipoMensaje = 'error';
-      this.destruirMensajeAlerta();
+      this.alerta = {
+        mensaje: e.error.mensaje,
+        tipoMensaje: 'error'
+      };
     });
   }
 
@@ -88,20 +90,17 @@ export class ReservarComponent implements OnInit {
     this.mascotaServices.registrar(this.mascotaForm.value as Mascota).subscribe(idMascota => {
       this.idMascota = idMascota.valor;
       this.reservaForm.get('idMascota').setValue(idMascota.valor);
-      this.mensaje = `Se ha registrado la mascota con éxito. El ID de mascota es: ${idMascota.valor}`
-      this.tipoMensaje = 'exito';
-      this.destruirMensajeAlerta();
+      this.alerta = {
+        mensaje: `Se ha registrado la mascota con éxito. El ID de mascota es: ${idMascota.valor}`,
+        tipoMensaje: 'exito'
+      };
     }, e => {
-      this.mensaje = e.error.mensaje;
-      this.tipoMensaje = 'error';
-      this.destruirMensajeAlerta();
+      this.alerta = {
+        mensaje: e.error.mensaje,
+        tipoMensaje: 'error'
+      };
     });
   }
 
-  private destruirMensajeAlerta() {
-    setTimeout(() => {
-      this.mensaje = null;
-    }, 8000);
-  }
 
 }

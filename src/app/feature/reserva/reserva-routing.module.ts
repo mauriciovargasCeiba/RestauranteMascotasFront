@@ -4,6 +4,7 @@ import { CancelarReservaComponent } from './components/cancelar-reserva/cancelar
 import { ReservarComponent } from './components/reservar/reservar.component';
 import { ListarReservaComponent } from './components/listar-reserva/listar-reserva.component';
 import { ReservaComponent } from './components/reserva/reserva.component';
+import { MostrarReservaComponent } from './components/mostrar-reserva/mostrar-reserva.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
       {
         path: 'cancelar',
         component: CancelarReservaComponent
+      },
+      {
+        path: 'mostrar',
+        component: MostrarReservaComponent
       }
     ]
   }
