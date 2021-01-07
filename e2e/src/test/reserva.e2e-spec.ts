@@ -5,6 +5,8 @@ import { ReservaMainPage } from '../page/reserva/reserva-main.po';
 import { protractor } from 'protractor/built/ptor';
 import { browser, ExpectedConditions } from 'protractor';
 import { ListaReservasPage } from '../page/reserva/listar-reserva.po';
+import { MostrarReservaPage } from '../page/reserva/mostrar-reserva.po';
+import { CancelarReservaPage } from '../page/reserva/cancelar-reserva.po';
 
 describe('workspace-project Reserva', () => {
     let page: AppPage;
@@ -12,6 +14,8 @@ describe('workspace-project Reserva', () => {
     let reservaMain: ReservaMainPage;
     let reservar: ReservarPage;
     let listaReservas: ListaReservasPage;
+    let mostrarReserva: MostrarReservaPage;
+    let cancelarReserva: CancelarReservaPage;
 
     beforeEach(() => {
         page = new AppPage();
@@ -19,14 +23,18 @@ describe('workspace-project Reserva', () => {
         reservaMain = new ReservaMainPage();
         reservar = new ReservarPage();
         listaReservas = new ListaReservasPage();
+        mostrarReserva = new MostrarReservaPage();
+        cancelarReserva = new CancelarReservaPage();
     });
 
-    it('Deberia crear reservar sin mascota', () => {
+    it('Deberia crear reservar sin mascota, listar todas las reservas, mostrar una reserva específica y cancelar la reserva', () => {
         const NUMERO_MESA = 1;
         const FECHA_HORA = '01-12-2120' + protractor.Key.TAB + '22:22';
         const NOMBRE_COMPLETO_CLIENTE = 'Cliente Test';
         const TELEFONO_CLIENTE = '1234567';
 
+
+        /* CREAR RESERVA */
         page.navigateTo();
         navBar.clickBotonReservas();
         reservaMain.clickLinkReservar();
@@ -40,23 +48,45 @@ describe('workspace-project Reserva', () => {
 
         reservar.clickBotonReservar();
 
-        // const CODIGO_ESPERADO_RESERVA = '0002120012142201_0000';
+        const alertaReservar = reservar.obtenerAlerta();
+        expect(alertaReservar).toBeTruthy(); 
         
-        const alerta = reservar.obtenerAlerta();
-        // browser.wait(ExpectedConditions.visibilityOf(alerta), 1000, alerta.locator());
+        const CODIGO_ESPERADO_RESERVA = '0002120012142201_0000';
+        browser.wait(ExpectedConditions.visibilityOf(alertaReservar), 1000, alertaReservar.locator());
 
-        // let mensajeAlerta = reservar.obtenerMensajeAlerta();
-        // expect(mensajeAlerta).toContain(CODIGO_ESPERADO_RESERVA);
-        expect(alerta).toBeTruthy();
+        let mensajeAlertaReservar = reservar.obtenerMensajeAlerta();
+        expect(mensajeAlertaReservar).toContain(CODIGO_ESPERADO_RESERVA); // ¿Test frágil?
 
-    });
 
-    it('deberia listar las reservas', () => {
-        page.navigateTo();
-        navBar.clickBotonReservas();
+        /* LISTAR TODAS LAS RESERVAS */
         reservaMain.clickLinkListarReservas();
 
         const totalReservas = listaReservas.contarReservas();
         expect(totalReservas).toBeGreaterThan(0);
+
+
+        /* MOSTRAR LA RESERVA CREADA */
+        reservaMain.clickLinkMostrarReserva();
+        mostrarReserva.ingresarCodigo(CODIGO_ESPERADO_RESERVA);
+        mostrarReserva.clickBotonMostrarReserva();
+
+        mostrarReserva.obtenerDetallesReserva().then(detalles => {
+            expect(detalles[0]).toContain(NOMBRE_COMPLETO_CLIENTE);
+        });
+
+        /* CANCELAR LA RESERVA CREADA */
+        reservaMain.clickLinkCancelarReserva();
+        cancelarReserva.ingresarCodigo(CODIGO_ESPERADO_RESERVA);
+        cancelarReserva.clickBotonCancelar();
+
+        const alertaCancelarReserva = cancelarReserva.obtenerAlerta();
+        expect(alertaCancelarReserva).toBeTruthy(); 
+        
+        browser.wait(ExpectedConditions.visibilityOf(alertaCancelarReserva), 1000, alertaCancelarReserva.locator());
+
+        let mensajeCancelarAlerta = reservar.obtenerMensajeAlerta();
+        expect(mensajeCancelarAlerta).toContain(CODIGO_ESPERADO_RESERVA);
+
     });
+
 });

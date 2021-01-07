@@ -1,6 +1,7 @@
 import { by, element } from 'protractor';
+import { ConAlertasPage } from '../alerta/alerta.po';
 
-export class ReservarPage {
+export class ReservarPage extends ConAlertasPage {
     private inputNumeroMesaReserva = element(by.id('numeroMesaReserva'));
     private inputFechaYHoraReserva = element(by.id('fechaYHoraReserva'));
     private inputNombreCompletoClienteReserva = element(by.id('nombreCompletoClienteReserva'));
@@ -10,8 +11,6 @@ export class ReservarPage {
 
     private checkboxIncluyeMascotaReserva = element(by.id('incluyeMascota'));
     private formularioMascota = element(by.id('formularioMascota'));
-
-    private alerta = element(by.id('alerta'));
     
     async ingresarNumeroMesa(numeroMesa) {
         await this.inputNumeroMesaReserva.sendKeys(numeroMesa);
@@ -33,11 +32,6 @@ export class ReservarPage {
         await this.buttonReservar.click();
     }
 
-    async obtenerMensajeAlerta() {
-        const mensaje = await this.alerta.getText();
-        return mensaje;
-    }
-
     async clickCheckboxIncluyeMascota() {
         await this.checkboxIncluyeMascotaReserva.click();
     }
@@ -48,10 +42,6 @@ export class ReservarPage {
 
     obtenerBotonReservar() {
         return this.buttonReservar;
-    }
-
-    obtenerAlerta() {
-        return this.alerta;
     }
 
 }
