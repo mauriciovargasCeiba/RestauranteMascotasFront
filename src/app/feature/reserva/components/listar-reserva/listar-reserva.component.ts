@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 
 import { ReservaService } from '@reserva/shared/service/reserva.service';
 import { Reserva } from '@reserva/shared/model/reserva';

@@ -55,7 +55,7 @@ describe('ReservaService', () => {
     service.cancelar(dummyReserva.codigoGenerado).subscribe((respuesta) => {
       expect(respuesta).toEqual(true);
     });
-    const req = httpMock.expectOne(`${apiEndpointReservas}/1`);
+    const req = httpMock.expectOne(`${apiEndpointReservas}/00021203660000_1234`);
     expect(req.request.method).toBe('DELETE');
     req.event(new HttpResponse<boolean>({body: true}));
   });

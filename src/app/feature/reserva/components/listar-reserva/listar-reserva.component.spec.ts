@@ -8,14 +8,16 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ReservaService } from '../../shared/service/reserva.service';
 import { Reserva } from '../../shared/model/reserva';
 import { HttpService } from 'src/app/core/services/http.service';
+import { Mascota } from '@reserva/shared/model/mascota';
 
 describe('ListarReservaComponent', () => {
   let component: ListarReservaComponent;
   let fixture: ComponentFixture<ListarReservaComponent>;
   let reservaService: ReservaService;
-  const listaReservas: Reserva[] = [
-    new Reserva(1, 1, new Date(), 'Reserva 1', '1234567', '1234', '00021203660000_1234'),
-    new Reserva(2, 2, new Date(), 'Reserva 2', '0987654', '56789','00021203660000_56789')
+  const mascota: Mascota = new Mascota(1, 'Mascota 1', 'PERRO', 5);
+  const listaReservas: any[] = [
+    Object.assign(new Reserva(1, 1, new Date(), 'Reserva 1', '1234567', '1234', '00021203660000_1234'), {mascota}),
+    Object.assign(new Reserva(2, 2, new Date(), 'Reserva 2', '0987654', '56789','00021203660000_56789'), {mascota})
   ];
 
   beforeEach(async(() => {
@@ -43,9 +45,7 @@ describe('ListarReservaComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-    component.listaReservas.subscribe(resultado => {
-      expect(2).toBe(resultado.length);
-  });
+    expect(2).toBe(component.listaReservas.length);
 });
 
 });

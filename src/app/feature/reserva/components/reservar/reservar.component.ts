@@ -35,7 +35,7 @@ export class ReservarComponent implements OnInit {
     });
   }
 
-  crear() {
+  reservar() {
     this.formatearFechaYHora(this.reservaForm);
     this.reservaServices.reservar(this.reservaForm.value as Reserva).subscribe(respuesta => {
       this.mensaje = `La reserva ha sido creada con éxito. Código de reserva: ${Object.values(respuesta.valor)[0]}`;
@@ -84,7 +84,7 @@ export class ReservarComponent implements OnInit {
     this.eliminarCampoIdMascotaFormularioReserva();
   }
 
-  crearMascota() {
+  registrarMascota() {
     this.mascotaServices.registrar(this.mascotaForm.value as Mascota).subscribe(idMascota => {
       this.idMascota = idMascota.valor;
       this.reservaForm.get('idMascota').setValue(idMascota.valor);
