@@ -10,6 +10,7 @@ import { HttpService } from './services/http.service';
 import { ManejadorError } from './interceptor/manejador-error';
 import { RouterModule } from '@angular/router';
 import { MascotaService } from './services/mascota.service';
+import { TcrmService } from './services/tcrm.service';
 
 @NgModule({
   declarations: [ToolbarComponent, NavbarComponent],
@@ -24,7 +25,8 @@ import { MascotaService } from './services/mascota.service';
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: ErrorHandler, useClass: ManejadorError },
-    MascotaService
+    MascotaService,
+    TcrmService
   ]
 })
 export class CoreModule { }

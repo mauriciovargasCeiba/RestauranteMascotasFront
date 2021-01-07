@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TcrmService } from '@core/services/tcrm.service';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  tcrm: number;
 
-  constructor() { }
+  constructor(protected tcrmServices: TcrmService) { }
 
   ngOnInit() {
+    this.tcrmServices.obtenerTCRM().subscribe(tcrm => {
+      this.tcrm = tcrm;
+    });
   }
 
 }
