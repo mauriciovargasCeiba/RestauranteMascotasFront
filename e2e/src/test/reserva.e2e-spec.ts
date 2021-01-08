@@ -27,7 +27,7 @@ describe('workspace-project Reserva', () => {
         cancelarReserva = new CancelarReservaPage();
     });
 
-    it('Deberia crear reservar con mascota, listar todas las reservas, mostrar una reserva específica y cancelar la reserva', () => {
+    it('Deberia reservar con mascota, listar todas las reservas, mostrar una reserva específica y cancelar la reserva', () => {
         const NUMERO_MESA = 1;
         const FECHA_HORA = '01-12-2120' + protractor.Key.TAB + '22:22';
         const NOMBRE_COMPLETO_CLIENTE = 'Cliente Test';

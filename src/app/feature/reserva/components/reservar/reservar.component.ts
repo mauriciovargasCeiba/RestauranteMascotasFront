@@ -55,7 +55,7 @@ export class ReservarComponent implements OnInit {
       numeroMesa: new FormControl('', [Validators.required]),
       fechaYHora: new FormControl('', [Validators.required]),
       nombreCompletoCliente: new FormControl('', [Validators.required]),
-      telefonoCliente: new FormControl('', [Validators.required]),
+      telefonoCliente: new FormControl('', [Validators.required, Validators.minLength(7), Validators.maxLength(10)]),
       incluyeMascota: new FormControl('')
     });
   }
@@ -76,7 +76,7 @@ export class ReservarComponent implements OnInit {
     this.mascotaForm = new FormGroup({
       nombre: new FormControl('', [Validators.required]),
       especie: new FormControl('', [Validators.required]),
-      edad: new FormControl('', [Validators.required])
+      edad: new FormControl('', [Validators.required, Validators.min(0)])
     });
     this.anadirCampoIdMascotaAFormularioReserva();
   }

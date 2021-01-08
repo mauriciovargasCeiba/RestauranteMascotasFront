@@ -31,3 +31,5 @@
 [0107/104429.566:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\MAURIC~1.VAR\AppData\Local\Temp\karma-91593459\Crashpad\attachments\7756dd78-a0bc-4cf2-b51c-13290e022875: The system cannot find the path specified. (0x3)
 [0107/184510.164:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
 [0107/184513.162:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\MAURIC~1.VAR\AppData\Local\Temp\karma-97805311\Crashpad\attachments\ed1e3183-1d1a-40c7-a679-568f1bbb5348: The system cannot find the path specified. (0x3)
+[0108/064600.718:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\MAURIC~1.VAR\AppData\Local\Temp\karma-32995449\Crashpad\attachments\60b3ed49-16da-4c2f-8666-8331522de15f: The system cannot find the path specified. (0x3)
+[0108/085923.379:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\MAURIC~1.VAR\AppData\Local\Temp\karma-80051411\Crashpad\attachments\134d4592-fc01-4914-9ebb-7210b0c7034c: The system cannot find the path specified. (0x3)
